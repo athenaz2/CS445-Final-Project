@@ -40,3 +40,10 @@ Get the rerendered image and generate weighted map with rerendered dataset
 
 Train the instant-ngp with weighted map which could control the generated lighting condition with an extra simple parameter
 
+
+# Statement of device
+ Currently Feiran's labtop could run instant-ngp, but not sure what will happen when retraining model at the final step.
+
+ Athena and Shourya are suggested to test code on the computer in ECE building. That computer could run demo of the nerfstudio which could used be test ideas. When it works, Feiran could train it on his laptop.
+
+ Under worset situation, we might need to use cloud computing. 
