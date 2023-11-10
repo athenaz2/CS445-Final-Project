@@ -24,13 +24,11 @@ For details read Documentation
 
 ~~Download the dataset~~
 
-~~Figure out the orgnize of dataset~~
+~~Figure out the organize of dataset~~
 
 ~~Extract the object with the mask~~
 
 ~~Generate weighted map with original dataset~~
-![CA2](https://github.com/athenaz2/CS445-Final-Project/assets/62454493/e76577f1-cdc1-496a-b3d5-dbb8d36e0f00)
-
 
 Figure out how to change the dataset of Nerfstudio
 
