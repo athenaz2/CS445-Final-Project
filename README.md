@@ -2,6 +2,7 @@
 
 # Dataset Preparetion
 1. Install dataset
+   
 Take the website of OpenIllumination as the [overview](https://oppo-us-research.github.io/OpenIllumination/) to select object to download.
 ```bash
 # Change the `--obj_id` with the Object ID. 
@@ -9,6 +10,7 @@ python open_illumination.py --light lighting_patterns --obj_id 2
 ```
 
 2. Generate weighted map
+   
 Given 4 images of same object at same camera pose from 4 different lighting conditions, We need to create a weighted map which is linear interpolation map.
 
 ```bash
