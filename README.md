@@ -46,6 +46,6 @@ Train the instant-ngp with weighted map which could control the generated lighti
 # Statement of device
  Currently Feiran's labtop could run instant-ngp, but not sure what will happen when retraining model at the final step.
 
- Athena and Shourya are suggested to test code on the computer in ECE building. That computer could run demo of the nerfstudio which could used be test ideas. When it works, Feiran could train it on his laptop.
+ Athena and Shourya are suggested to test code on the computer in ECE building. That computer could run demo of the nerfstudio which could be used to test ideas like integrating IO dataset into nerfstudio (since all different model share smiliar dataset reading framework). When it works, Feiran could train it on his laptop.
 
  Under worset situation, we might need to use cloud computing. 
