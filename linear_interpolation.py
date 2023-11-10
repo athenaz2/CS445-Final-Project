@@ -7,20 +7,20 @@ import imageio.v2 as imageio
 # Define your folder paths
 absolute_path = "/home/fr/Documents/project/openillumination/lighting_patterns/"
 # Object name
-object = "obj_02_egg/"
+object_name = "obj_02_egg/"
 # Size of weighted map
 grid_size = 4
 
 
-lighting_condition1 = absolute_path + object + 'Lights/001/raw_undistorted'
-lighting_condition4 = absolute_path + object + 'Lights/004/raw_undistorted'
-lighting_condition8 = absolute_path + object + 'Lights/008/raw_undistorted'
-lighting_condition13 = absolute_path + object + 'Lights/013/raw_undistorted'
-mask_folder_path = absolute_path + object + "output/obj_masks"
+lighting_condition1 = absolute_path + object_name + 'Lights/001/raw_undistorted'
+lighting_condition4 = absolute_path + object_name + 'Lights/004/raw_undistorted'
+lighting_condition8 = absolute_path + object_name + 'Lights/008/raw_undistorted'
+lighting_condition13 = absolute_path + object_name + 'Lights/013/raw_undistorted'
+mask_folder_path = absolute_path + object_name + "output/obj_masks"
 
 
 def generate_weighted_sample(image_list, image_name, grid_size):
-    destination_folder_path = absolute_path + object + 'weighted_map/' + str(grid_size) + "/"
+    destination_folder_path = absolute_path + object_name + 'weighted_map/' + str(grid_size) + "/"
     os.makedirs(destination_folder_path, exist_ok=True)
     destination = destination_folder_path  + image_name
 
