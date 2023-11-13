@@ -12,7 +12,7 @@ python open_illumination.py --light lighting_patterns --obj_id 2
 Given 4 images of same object at same camera pose from 4 different lighting conditions, We need to create a weighted map which is linear interpolation map.
 
 ```bash
-# Change the absolute path, object_name and gride_size inside the code
+# Change the 'absolute path', 'object_name' and 'gride_size' inside the code
 python open_illumination.py
 ```
 
@@ -20,7 +20,24 @@ python open_illumination.py
 For details read Documentation
 - [Google Drive Documentation](https://docs.google.com/document/d/125_pEVwcW1vr8rgyA3AHYGLZWvO4CTy0PwD5N3cTVVk/edit?usp=sharing_)
 
-**Steps:**
+
+# This week Plan:
+Athena: Generate datasets: to every object, every viewpoints, generate weighted images and save them with the name of their position (00, specify the image locates at x=0,y=0 in weighted map). The dataset structure might looks like this:
+
+- lighting_patterns
+    - obj_02_egg
+        - CA2
+        00.jpg
+        01.jpg
+        ...
+
+Feiran, Shourya: Enable to train the instant-ngp on dataset.
+1. Run the demo on machine
+2. Run the instant-ngp on machine
+3. Run the instant-ngp with our dataset
+
+
+**Process:**
 
 ~~Download the dataset~~
 
@@ -30,11 +47,12 @@ For details read Documentation
 
 ~~Generate weighted map with original dataset~~
 
-Figure out how to change the dataset of Nerfstudio
+~~Figure out how to change the dataset of Nerfstudio~~
 
-Integrate the dataset of OI into Nerfstudio
+~~Integrate the dataset of OI into Nerfstudio~~
 
 Train the instant-ngp with OI dataset
+- Met problem of GPU memory --> solution: borrow RTX1070 (15G) from library
 
 Get the rerendered image and generate weighted map with rerendered dataset
 
