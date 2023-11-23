@@ -5,7 +5,7 @@ import huggingface_hub
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--local_dir", default="/home/fr/Documents/project/openillumination")
+parser.add_argument("--local_dir", default="")
 parser.add_argument("--light", required=True, choices=['lighting_patterns', 'OLAT'])
 parser.add_argument("--obj_id", default=1, type=int)
 parser.add_argument("--with_raw", default=False, action='store_true')

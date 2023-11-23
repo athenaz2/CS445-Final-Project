@@ -7,15 +7,19 @@ import imageio.v2 as imageio
 #----------------------------------------------------------------------------------
 # Change Parameters Here
 # Define your folder paths
-absolute_path = "/home/fr/Documents/project/openillumination/lighting_patterns/"
+absolute_path = "/home/fr/Documents/project/CS445-Final-Project"+ "/lighting_patterns/"
 # Object name, the folder name of the objects under folder lighting_patterns
-object_name = "obj_07_dog/"
+object_name = "obj_02_egg/"
 # Size of weighted map
 grid_size = 4
 # Output masked images
-ouput_masked_object = False
+ouput_masked_object = True
 # Output weighted maps
 weighted_sample = False
+# Change the size of the image H/ratio; W/ratio
+ratio = 1
+# Mask color white ; black
+mask_color = "black"
 #----------------------------------------------------------------------------------
 
 lighting_condition1 = absolute_path + object_name + 'Lights/001/raw_undistorted'
@@ -25,10 +29,10 @@ lighting_condition13 = absolute_path + object_name + 'Lights/013/raw_undistorted
 mask_folder_path = absolute_path + object_name + "output/obj_masks"
 
 
-output_lighting_condition1 = absolute_path + object_name + 'object/001/output'
-output_lighting_condition4 = absolute_path + object_name + 'object/004/output'
-output_lighting_condition8 = absolute_path + object_name + 'object/008/output'
-output_lighting_condition13 = absolute_path + object_name + 'object/013/output'
+output_lighting_condition1 = absolute_path + object_name + 'object/'+ str(ratio) + 'black/001/'
+output_lighting_condition4 = absolute_path + object_name + 'object/'+ str(ratio) + 'black/004/'
+output_lighting_condition8 = absolute_path + object_name + 'object/'+ str(ratio) + 'black/008/'
+output_lighting_condition13 = absolute_path + object_name + 'object/'+ str(ratio) + 'black/013/'
 
 def generate_weighted_sample(image_list, image_name, grid_size):
     destination_folder_path = absolute_path + object_name + 'weighted_map/' + str(grid_size) + "/"
@@ -75,8 +79,11 @@ def extract_object(image_list, mask):
     for image in image_list:
         # White background
         mask_3d = np.expand_dims(mask, axis=-1)
-        white_image = np.full(image.shape, [255, 255, 255], dtype=np.uint8)
-        masked_image = np.where(mask_3d, image, white_image)
+        if mask_color == "white":
+            mask_image = np.full(image.shape, [255, 255, 255], dtype=np.uint8)
+        elif mask_color == "black":
+            mask_image = np.full(image.shape, [0, 0, 0], dtype=np.uint8)
+        masked_image = np.where(mask_3d, image, mask_image)
         # Black background
         # mask_3d = mask[:, :, np.newaxis]
         # masked_image = image * mask_3d
@@ -87,15 +94,22 @@ def extract_object(image_list, mask):
 def output(image_list, output_folders, image_name):
     # Save each image in the image_list to the corresponding folder
     for img, folder in zip(image_list, output_folders):
+        H, W, _ = img.shape
+        height = int(H / ratio)
+        width = int(W /ratio)
+        print(height, width)
         # Ensure the output folder exists
         if not os.path.exists(folder):
             os.makedirs(folder)
+        image_name = '.'.join(image_name.split(".")[:-1]) + ".jpg"
         output_path = os.path.join(folder, image_name)
+        img = cv2.resize(img, (width, height))
         cv2.imwrite(output_path, img)
 
 def main(grid_size, ouput_masked_object = False, weighted_sample = False):
     source_folder_paths = [lighting_condition1, lighting_condition4, lighting_condition8, lighting_condition13]
-    output_folder_paths = [output_lighting_condition1, output_lighting_condition4, output_lighting_condition8, output_lighting_condition13]
+    # output_folder_paths = [output_lighting_condition1, output_lighting_condition4, output_lighting_condition8, output_lighting_condition13]
+    output_folder_paths = [output_lighting_condition1]
     # Assuming all folders have the same number of images with the same names
     image_names = os.listdir(source_folder_paths[0])  
     for image_name in image_names:
